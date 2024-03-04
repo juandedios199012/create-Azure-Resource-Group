@@ -6,10 +6,7 @@
         "type": "Microsoft.Resources/resourceGroups",
         "apiVersion": "2020-06-01",
         "name": "rg-automation-001",
-        "location": "eastus",
-        "properties": {
-            
-          }
+        "location": "eastus"
       }
     ]
 }
