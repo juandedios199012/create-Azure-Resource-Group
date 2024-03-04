@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2020-06-01",
+      "name": "rg-automation-001",
+      "location": "eastus"
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2023-06-01",
+      "name": "vnet-automation-eastus-001",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/resourceGroups', 'rg-automation-001')]"
+      ],
+      "properties": {
+          "addressSpace": {
+              "addressPrefixes": [
+                  "10.0.0.0/16"
+              ]
+          },
+          "subnets": [
+              {
+                  "name": "default",
+                  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'vnet-automation-eastus-001', 'default')]",
+                  "properties": {
+                      "addressPrefix": "10.0.0.0/24",
+                      "delegations": [],
+                      "privateEndpointNetworkPolicies": "Enabled",
+                      "privateLinkServiceNetworkPolicies": "Enabled"
+                  },
+                  "type": "Microsoft.Network/virtualNetworks/subnets"
+              }
+          ],
+          "virtualNetworkPeerings": [],
+          "enableDdosProtection": false
+      }
+   }
+  ]
+}
+
+
