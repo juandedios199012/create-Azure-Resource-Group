@@ -1,9 +1,6 @@
 trigger:
 - main
 
-pool:
-  name: 'PortafolioAG'
-
 steps:
 - task: AzureCLI@2
   displayName: 'Crear Recursos en Azure'
