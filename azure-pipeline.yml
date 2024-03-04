@@ -1,0 +1,20 @@
+trigger:
+- main
+
+pool:
+  name: 'PortafolioAG'
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Crear Recursos en Azure'
+  inputs:
+    azureSubscription: 'AzureResourceManager'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      # Crear grupo de recursos
+      az group create --name rg-automation-001 --location eastus
+
+      # Crear red virtual
+      az network vnet create --resource-group rg-qa-001 --name vnet-automation-eastus-001 --address-prefixes 10.0.0.0/16 --subnet-name snet-automation-eastus-001 --subnet-prefixes 10.0.0.0/24
+  
