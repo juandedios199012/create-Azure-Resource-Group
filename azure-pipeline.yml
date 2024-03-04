@@ -1,12 +1,15 @@
 trigger:
 - main
 
+pool:
+  vmImage: 'windows-latest'
+
 steps:
 - task: AzureCLI@2
   displayName: 'Crear Recursos en Azure'
   inputs:
     azureSubscription: 'AzureResourceManager'
-    scriptType: 'bash'
+    scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
       # Crear grupo de recursos
