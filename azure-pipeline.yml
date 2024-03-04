@@ -6,7 +6,7 @@ steps:
   displayName: 'Crear Recursos en Azure'
   inputs:
     azureSubscription: 'AzureResourceManager'
-    scriptType: 'ps'
+    scriptType: 'powershell'
     scriptLocation: 'inlineScript'
     inlineScript: |
       # Crear grupo de recursos
